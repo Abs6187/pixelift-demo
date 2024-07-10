@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixeLift Designs</title>
+    <style>
+        :root {
+            --primary-color: #5D3FD3;
+            --secondary-color: #FFC0CB;
+            --text-color: #333;
+            --background-color: #F5F5F5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 5px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .service-card {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #4B2FA6;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #4B2FA6;
+        }
+
+        /* Typography styles */
+        h1 { font-size: clamp(2rem, 5vw, 4rem); font-weight: bold; line-height: 1.2; }
+        h2 { font-size: clamp(1.8rem, 4vw, 3.5rem); font-weight: 600; line-height: 1.2; }
+        h3 { font-size: clamp(1.6rem, 3.5vw, 3rem); font-weight: 600; line-height: 1.2; }
+        h4 { font-size: clamp(1.4rem, 3vw, 2.5rem); font-weight: 600; line-height: 1.2; }
+        h5 { font-size: clamp(1.2rem, 2.5vw, 2rem); font-weight: 600; line-height: 1.2; }
+        h6 { font-size: clamp(1rem, 2vw, 1.5rem); font-weight: 600; line-height: 1.2; }
+        
+        .body-text { font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.6; }
+        .small-text { font-size: clamp(0.8rem, 1.5vw, 1rem); line-height: 1.4; }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            header {
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .blog-card {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 15px;
+        }
+
+        .blog-content h4 {
+            margin-bottom: 10px;
+        }
+
+        .blog-content p {
+            margin-bottom: 10px;
+        }
+
+        .read-more {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 0.9em;
+            transition: background-color 0.3s;
+        }
+
+        .read-more:hover {
+            background-color: #4B2FA6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>PixeLift Designs</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="home">
+            <h2>Digital Marketing & Branding</h2>
+            <p class="body-text">Welcome to PixeLift Designs, your one-stop solution for digital marketing and branding needs.</p>
+            <a href="#services" class="cta-button">Our Services</a>
+        </section>
+
+        <section id="services">
+            <h3>Our Services</h3>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="/api/placeholder/100/100" alt="Content Writing">
+                    <h4>Content Writing</h4>
+                    <p class="small-text">Engaging and SEO-optimized content for your brand.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <img src="/api/placeholder/100/100" alt="Graphic Designing">
+                    <h4>Graphic Designing</h4>
+                    <p class="small-text">Eye-catching visuals that represent your brand.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <img src="/api/placeholder/100/100" alt="Video Editing">
+                    <h4>Video Editing</h4>
+                    <p class="small-text">Professional video editing for your marketing needs.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <img src="/api/placeholder/100/100" alt="Social Media Management">
+                    <h4>Social Media Management</h4>
+                    <p class="small-text">Comprehensive social media strategy and execution.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="blogs">
+            <h3>Our Blogs</h3>
+           
+        
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="src\5 Digital Marketing Trends for 2024.jfif" alt="Blog post 1">
+                    <div class="blog-content">
+                        <h4>5 Digital Marketing Trends for 2024</h4>
+                        <p class="small-text">Stay ahead of the curve with these emerging trends in digital marketing.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="src\The Power of Visual Branding.jfif" alt="Blog post 2">
+                    <div class="blog-content">
+                        <h4>The Power of Visual Branding</h4>
+                        <p class="small-text">Discover how strong visual branding can elevate your business.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="src\Mastering Social Media Engagement.png" alt="Blog post 3">
+                    <div class="blog-content">
+                        <h4>Mastering Social Media Engagement</h4>
+                        <p class="small-text">Learn strategies to boost your social media engagement and grow your audience.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="src\Content Writing Tips for SEO.jfif" alt="Blog post 4">
+                    <div class="blog-content">
+                        <h4>Content Writing Tips for SEO</h4>
+                        <p class="small-text">Optimize your content for search engines without sacrificing quality.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="contact">
+            <h3>Contact Us</h3>
+            <p class="body-text">Get in touch with us for your digital marketing needs.</p>
+            <section id="contact">
+        
+            <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    </div>
+                 <div class="form-group">
+                 <label for="email">Email:</label>
+                 <input type="email" id="email" name="email" required>
+                </div>
+            <div class="form-group">
+                 <label for="subject">Subject:</label>
+                  <input type="text" id="subject" name="subject" required>
+             </div>
+         <div class="form-group">
+            <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+         </div>
+             <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PixeLift Designs. All rights reserved.</p>
+    </footer>
+</body>
+</html>
