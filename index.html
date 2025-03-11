@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixeLift Designs</title>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-web@0.12.2/dist/dotlottie-web.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #5D3FD3;
@@ -255,9 +261,50 @@
         .read-more:hover {
             background-color: #4B2FA6;
         }
+
+        .animation-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .hero-animation {
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+        }
+
+        .services-animation {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px;
+        }
+
+        .contact-animation {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
     </style>
 </head>
 <body>
+    <!-- Progress indicator -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+
     <header>
         <div class="container">
             <h1>PixeLift Designs</h1>
@@ -274,6 +321,9 @@
 
     <main class="container">
         <section id="home">
+            <div class="hero-animation">
+                <canvas id="hero-lottie" width="400" height="300"></canvas>
+            </div>
             <h2>Digital Marketing & Branding</h2>
             <p class="body-text">Welcome to PixeLift Designs, your one-stop solution for digital marketing and branding needs.</p>
             <a href="#services" class="cta-button">Our Services</a>
@@ -282,26 +332,34 @@
         <section id="services">
             <h3>Our Services</h3>
             <div class="services-grid">
-                <div class="service-card">
-                    <img src="/api/placeholder/100/100" alt="Content Writing">
+                <div class="service-card fade-in">
+                    <div class="services-animation">
+                        <canvas id="content-writing-lottie"></canvas>
+                    </div>
                     <h4>Content Writing</h4>
                     <p class="small-text">Engaging and SEO-optimized content for your brand.</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
-                <div class="service-card">
-                    <img src="/api/placeholder/100/100" alt="Graphic Designing">
+                <div class="service-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="services-animation">
+                        <canvas id="graphic-design-lottie"></canvas>
+                    </div>
                     <h4>Graphic Designing</h4>
                     <p class="small-text">Eye-catching visuals that represent your brand.</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
-                <div class="service-card">
-                    <img src="/api/placeholder/100/100" alt="Video Editing">
+                <div class="service-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="services-animation">
+                        <canvas id="video-editing-lottie"></canvas>
+                    </div>
                     <h4>Video Editing</h4>
                     <p class="small-text">Professional video editing for your marketing needs.</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
-                <div class="service-card">
-                    <img src="/api/placeholder/100/100" alt="Social Media Management">
+                <div class="service-card fade-in" style="animation-delay: 0.6s;">
+                    <div class="services-animation">
+                        <canvas id="social-media-lottie"></canvas>
+                    </div>
                     <h4>Social Media Management</h4>
                     <p class="small-text">Comprehensive social media strategy and execution.</p>
                     <a href="#" class="cta-button">Learn More</a>
@@ -309,10 +367,145 @@
             </div>
         </section>
 
+        <!-- New Portfolio/Gallery Section -->
+        <section id="portfolio" class="reveal fade-in">
+            <h3>Our Projects</h3>
+            <div class="portfolio-filters">
+                <button class="filter-button active" data-filter="all">All</button>
+                <button class="filter-button" data-filter="branding">Branding</button>
+                <button class="filter-button" data-filter="web">Web Design</button>
+                <button class="filter-button" data-filter="social">Social Media</button>
+                <button class="filter-button" data-filter="video">Video</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="branding">
+                    <img src="https://images.unsplash.com/photo-1553531889-56cc480ac5cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Branding Project 1">
+                    <div class="portfolio-overlay">
+                        <h4>Brand Identity</h4>
+                        <p>Complete rebranding for tech startup</p>
+                        <a href="#" class="outline-button">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1555952494-efd681c7e3f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Web Design Project">
+                    <div class="portfolio-overlay">
+                        <h4>E-commerce Website</h4>
+                        <p>Modern online store with custom checkout</p>
+                        <a href="#" class="outline-button">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="social">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Social Media Project">
+                    <div class="portfolio-overlay">
+                        <h4>Social Campaign</h4>
+                        <p>Viral marketing campaign for product launch</p>
+                        <a href="#" class="outline-button">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="video">
+                    <img src="https://images.unsplash.com/photo-1574717024396-037f46c726cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Video Project">
+                    <div class="portfolio-overlay">
+                        <h4>Product Advertisement</h4>
+                        <p>30-second commercial spot for TV and web</p>
+                        <a href="#" class="outline-button">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="branding">
+                    <img src="https://images.unsplash.com/photo-1600775508103-9fdd5b65c86a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Branding Project 2">
+                    <div class="portfolio-overlay">
+                        <h4>Packaging Design</h4>
+                        <p>Eco-friendly packaging for consumer goods</p>
+                        <a href="#" class="outline-button">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Web Design Project 2">
+                    <div class="portfolio-overlay">
+                        <h4>SaaS Platform</h4>
+                        <p>User-friendly interface for productivity tool</p>
+                        <a href="#" class="outline-button">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Testimonials Section with Carousel -->
+        <section id="testimonials" class="testimonials-section reveal fade-in">
+            <div class="container">
+                <h3>Client Testimonials</h3>
+                <div class="testimonials-carousel">
+                    <div class="testimonials-track">
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="testimonial-avatar">
+                                <div class="testimonial-content">
+                                    "PixeLift completely transformed our brand identity. Their team understood exactly what we needed and delivered beyond our expectations. Our social media engagement has increased by 200% since working with them!"
+                                </div>
+                                <div class="testimonial-author">Sarah Johnson, Marketing Director</div>
+                                <div class="testimonial-company">TechStart Inc.</div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="testimonial-avatar">
+                                <div class="testimonial-content">
+                                    "The content strategy developed by PixeLift helped us establish authority in our industry. Their team is responsive, creative, and delivers high-quality work consistently. Highly recommend their services!"
+                                </div>
+                                <div class="testimonial-author">Michael Chen, CEO</div>
+                                <div class="testimonial-company">GrowthBox Solutions</div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Amelia Rodriguez" class="testimonial-avatar">
+                                <div class="testimonial-content">
+                                    "Working with PixeLift has been a game-changer for our startup. Their comprehensive approach to digital marketing has given us a strong online presence and helped us connect with our target audience effectively."
+                                </div>
+                                <div class="testimonial-author">Amelia Rodriguez, Founder</div>
+                                <div class="testimonial-company">EcoWare Products</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-button prev-button"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-button next-button"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="carousel-indicators">
+                        <span class="carousel-dot active"></span>
+                        <span class="carousel-dot"></span>
+                        <span class="carousel-dot"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Newsletter Section -->
+        <section id="newsletter" class="reveal fade-in">
+            <div class="newsletter-container" style="background-image: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));">
+                <h3>Stay Updated</h3>
+                <p class="body-text">Subscribe to our newsletter for the latest trends, tips, and insights in digital marketing.</p>
+                <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button class="newsletter-button">Subscribe</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Social Proof Section -->
+        <section id="clients" class="social-proof reveal fade-in">
+            <h3>Trusted By</h3>
+            <div class="clients-grid">
+                <img src="https://brandlogos.net/wp-content/uploads/2020/11/google-logo-512x512.png" alt="Google" class="client-logo">
+                <img src="https://brandlogos.net/wp-content/uploads/2021/04/adobe-logo-512x512.png" alt="Adobe" class="client-logo">
+                <img src="https://brandlogos.net/wp-content/uploads/2022/04/spotify-logo-512x512.png" alt="Spotify" class="client-logo">
+                <img src="https://brandlogos.net/wp-content/uploads/2021/11/slack-logo-512x512.png" alt="Slack" class="client-logo">
+                <img src="https://brandlogos.net/wp-content/uploads/2016/06/dropbox-logo-preview-512x512.png" alt="Dropbox" class="client-logo">
+                <img src="https://brandlogos.net/wp-content/uploads/2022/10/airbnb-logo-512x512.png" alt="Airbnb" class="client-logo">
+            </div>
+        </section>
+
         <section id="blogs">
             <h3>Our Blogs</h3>
-           
-        
             <div class="blog-grid">
                 <div class="blog-card">
                     <img src="src\5 Digital Marketing Trends for 2024.jfif" alt="Blog post 1">
@@ -348,39 +541,54 @@
                 </div>
             </div>
         </section>
-        
 
         <section id="contact">
             <h3>Contact Us</h3>
             <p class="body-text">Get in touch with us for your digital marketing needs.</p>
-            <section id="contact">
-        
+            <div class="contact-animation">
+                <canvas id="contact-lottie"></canvas>
+            </div>
             <div class="contact-form">
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
-                 <div class="form-group">
-                 <label for="email">Email:</label>
-                 <input type="email" id="email" name="email" required>
-                </div>
-            <div class="form-group">
-                 <label for="subject">Subject:</label>
-                  <input type="text" id="subject" name="subject" required>
-             </div>
-         <div class="form-group">
-            <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-         </div>
-             <button type="submit" class="submit-button">Send Message</button>
-                    </form>
-                </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2024 PixeLift Designs. All rights reserved.</p>
     </footer>
+
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path class="sun" d="M12 3v1m0 16v1m-8-9H3m3.314-5.686L7.5 7.5m0 9l-1.186 1.186M21 12h-1m-3.314-5.686L15.5 7.5m0 9l1.186 1.186M9 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"/>
+            <path class="moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/theme.js"></script>
+    
+    <!-- Add new script for testimonials and portfolio -->
+    <script src="js/portfolio.js"></script>
 </body>
 </html>
