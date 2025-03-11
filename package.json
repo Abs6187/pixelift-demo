@@ -1,0 +1,21 @@
+{
+  "name": "pixelift-demo",
+  "version": "1.0.0",
+  "description": "PixeLift Designs Website Demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "website",
+    "pixelift",
+    "demo"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
